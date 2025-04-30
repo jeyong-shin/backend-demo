@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <title th:text="${board.title}">게시글 보기</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="mb-0" th:text="${board.title}">제목</h2>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between mb-3">
+                    <span>
+                        <strong>작성자:</strong> <span th:text="${board.author}">작성자</span>
+                    </span>
+                    <span>
+                        <strong>작성일:</strong> <span th:text="${#temporals.format(board.createdAt, 'yyyy-MM-dd HH:mm')}">2024-10-10</span>
+                    </span>
+                </div>
+                <hr>
+                <div class="mt-3">
+                    <p style="white-space: pre-line;" th:text="${board.content}">내용</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex gap-2">
+            <a th:href="@{/boards}" class="btn btn-secondary">목록</a>
+            <a th:href="@{/boards/{id}/edit(id=${board.id})}" class="btn btn-warning">수정</a>
+            <a th:href="@{/boards/{id}/delete(id=${board.id})}" 
+               class="btn btn-danger"
+               onclick="return confirm('정말 삭제하시겠습니까?');">삭제</a>
+        </div>
+    </div>
+</body>
+</html> 

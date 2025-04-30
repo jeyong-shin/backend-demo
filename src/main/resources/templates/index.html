@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <title>홈</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="jumbotron">
+            <h1 class="display-4">게시판 애플리케이션</h1>
+            <p class="lead">간단한 게시판 기능을 제공하는 스프링 부트 애플리케이션입니다.</p>
+            <hr class="my-4">
+            <p>게시글을 작성하고, 수정하고, 삭제할 수 있습니다.</p>
+            <a class="btn btn-primary btn-lg" th:href="@{/boards}" role="button">게시판으로 이동</a>
+        </div>
+        
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">게시글 작성</h5>
+                        <p class="card-text">새로운 게시글을 작성할 수 있습니다.</p>
+                        <a th:href="@{/boards/new}" class="btn btn-outline-primary">게시글 작성</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">게시글 목록</h5>
+                        <p class="card-text">작성된 게시글 목록을 확인할 수 있습니다.</p>
+                        <a th:href="@{/boards}" class="btn btn-outline-primary">게시글 목록</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

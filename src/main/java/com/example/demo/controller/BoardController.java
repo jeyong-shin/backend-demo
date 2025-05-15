@@ -23,7 +23,7 @@ public class BoardController {
     }
     
     @GetMapping("/{id}")
-    public String viewBoard(@PathVariable Long id, Model model) {
+    public String viewBoard(@PathVariable(name = "id") Long id, Model model) {
         model.addAttribute("board", boardService.getBoardById(id));
         return "boards/view";
     }
@@ -46,13 +46,13 @@ public class BoardController {
     }
     
     @GetMapping("/{id}/edit")
-    public String editBoardForm(@PathVariable Long id, Model model) {
+    public String editBoardForm(@PathVariable(name = "id") Long id, Model model) {
         model.addAttribute("boardDto", boardService.getBoardById(id));
         return "boards/form";
     }
     
     @PostMapping("/{id}")
-    public String updateBoard(@PathVariable Long id, 
+    public String updateBoard(@PathVariable(name = "id") Long id, 
                               @Valid @ModelAttribute("boardDto") BoardDto boardDto,
                               BindingResult result) {
         if (result.hasErrors()) {
@@ -64,7 +64,7 @@ public class BoardController {
     }
     
     @GetMapping("/{id}/delete")
-    public String deleteBoard(@PathVariable Long id) {
+    public String deleteBoard(@PathVariable(name = "id") Long id) {
         boardService.deleteBoard(id);
         return "redirect:/boards";
     }

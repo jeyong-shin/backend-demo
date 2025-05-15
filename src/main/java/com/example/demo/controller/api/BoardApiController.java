@@ -24,7 +24,7 @@ public class BoardApiController {
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<BoardDto> getBoardById(@PathVariable Long id) {
+    public ResponseEntity<BoardDto> getBoardById(@PathVariable(name = "id") Long id) {
         BoardDto board = boardService.getBoardById(id);
         return ResponseEntity.ok(board);
     }
@@ -37,14 +37,14 @@ public class BoardApiController {
     
     @PutMapping("/{id}")
     public ResponseEntity<BoardDto> updateBoard(
-            @PathVariable Long id, 
+            @PathVariable(name = "id") Long id, 
             @Valid @RequestBody BoardDto boardDto) {
         BoardDto updatedBoard = boardService.updateBoard(id, boardDto);
         return ResponseEntity.ok(updatedBoard);
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBoard(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteBoard(@PathVariable(name = "id") Long id) {
         boardService.deleteBoard(id);
         return ResponseEntity.noContent().build();
     }
